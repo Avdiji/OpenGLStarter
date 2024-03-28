@@ -1,0 +1,54 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 21,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "base",
+      "description": "Base settings for all Windows builds",
+      "hidden": true,
+      "generator": "Ninja",
+      "binaryDir": "build/${presetName}",
+      "installDir": "install/${presetName}"
+    },
+    {
+      "name": "release",
+      "description": "Release build configuration",
+      "hidden": true,
+      "displayName": "Release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "debug",
+      "description": "Debug build configuration",
+      "hidden": true,
+      "displayName": "Debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "windows-debug",
+      "description": "Windows Debug configuration",
+      "displayName": "Windows-Debug",
+      "inherits": ["base", "debug"],
+      "environment": {
+        "ENVIRONMENT": "Windows Debug"
+      }
+    },
+    {
+      "name": "windows-release",
+      "description": "Windows Release configuration",
+      "displayName": "Windows-Release",
+      "inherits": ["base", "release"],
+      "environment": {
+        "ENVIRONMENT": "Windows Release"
+      }
+    }
+  ]
+}
