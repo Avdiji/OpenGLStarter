@@ -2,10 +2,13 @@
 add_executable(${OPEN_GL_STARTER} main.cpp)
 add_subdirectory(${PROJECT_SOURCE_DIR}/include include)
 
+
 # link glfw
 find_package(OpenGL REQUIRED)
 target_link_libraries(${OPEN_GL_STARTER} PRIVATE glfw)
 target_link_libraries(${OPEN_GL_STARTER} PRIVATE OpenGL::GL)
+target_link_libraries(${OPEN_GL_STARTER} PRIVATE Glad)
+
 
 # setup install target
 install(TARGETS ${OPEN_GL_STARTER}

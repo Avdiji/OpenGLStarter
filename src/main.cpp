@@ -1,5 +1,6 @@
-#include <GLFW/glfw3.h>
 #include <main.hpp>
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 
 int main() {
     /* Initialize the library */
@@ -14,6 +15,12 @@ int main() {
 
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
+
+    if (!gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress))) {
+        glfwTerminate();
+        return -1;
+    }
+
     glClearColor(1, 1, 1, 0.0f);
 
     /* Loop until the user closes the window */
