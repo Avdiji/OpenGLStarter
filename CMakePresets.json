@@ -8,11 +8,22 @@
   "configurePresets": [
     {
       "name": "base",
-      "description": "Base settings for all Windows builds",
+      "description": "Base settings for all builds",
       "hidden": true,
       "generator": "Ninja",
       "binaryDir": "build/${presetName}",
       "installDir": "install/${presetName}"
+    },
+    {
+      "name": "windows",
+      "description": "Windows build configuration",
+      "hidden": true,
+      "displayName": "windows",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      }
     },
     {
       "name": "release",
@@ -36,7 +47,7 @@
       "name": "windows-debug",
       "description": "Windows Debug configuration",
       "displayName": "Windows-Debug",
-      "inherits": ["base", "debug"],
+      "inherits": ["base", "debug", "windows"],
       "environment": {
         "ENVIRONMENT": "Windows Debug"
       }
@@ -45,7 +56,7 @@
       "name": "windows-release",
       "description": "Windows Release configuration",
       "displayName": "Windows-Release",
-      "inherits": ["base", "release"],
+      "inherits": ["base", "release", "windows"],
       "environment": {
         "ENVIRONMENT": "Windows Release"
       }

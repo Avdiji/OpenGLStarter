@@ -7,7 +7,7 @@ int main() {
     if (!glfwInit()) { return -1; }
 
     /* Create a windowed mode window and its OpenGL context */
-    GLFWwindow *window = glfwCreateWindow(1920, 1080, "GLFW CMake starter", nullptr, nullptr);
+    GLFWwindow *window = glfwCreateWindow(500, 500, "GLFW CMake starter", nullptr, nullptr);
     if (!window) {
         glfwTerminate();
         return -1;
