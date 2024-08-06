@@ -1,3 +1,6 @@
+find_package(glfw3 REQUIRED)
+find_package(glad REQUIRED)
+
 # add executable and the corresponding headers
 add_executable(${OPEN_GL_STARTER} main.cpp)
 add_subdirectory(${PROJECT_SOURCE_DIR}/include include)

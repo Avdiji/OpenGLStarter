@@ -15,6 +15,16 @@
             "installDir": "install/${presetName}"
         },
         {
+            "name": "conan",
+            "description": "Conan Configuration",
+            "hidden": true,
+            "displayName": "conan",
+            "cacheVariables": {
+                "CMAKE_PROJECT_TOP_LEVEL_INCLUDES":"${sourceDir}/cmake/conan_provider.cmake",
+                "CONAN_INSTALL_ARGS":"--update;--build=missing"
+            }
+        },
+        {
             "name": "windows",
             "description": "Windows build configuration",
             "hidden": true,
@@ -50,7 +60,8 @@
             "inherits": [
                 "base",
                 "debug",
-                "windows"
+                "windows",
+                "conan"
             ],
             "environment": {
                 "ENVIRONMENT": "Windows Debug"
@@ -63,7 +74,8 @@
             "inherits": [
                 "base",
                 "release",
-                "windows"
+                "windows",
+                "conan"
             ],
             "environment": {
                 "ENVIRONMENT": "Windows Release"
