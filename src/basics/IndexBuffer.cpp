@@ -65,14 +65,14 @@ int main() {
     //   1   3
     //  --- ---
     // 0---2---4
-
     GLfloat vertices[] = {
-        -0.5f,    -0.5f, 0.0f,  // 0
-        -0.5 / 2, 0.0f,  0.0f,  // 1
-        0.0f,     -0.5f, 0.0f,  // 2
-        0.5 / 2,  0.0f,  0.0f,  // 3
-        0.5f,     -0.5f, 0.0f,  // 4
-        0.0f,     0.5f,  0.0f   // 5
+        // Positions
+        -0.5f,  -0.5f, 0.0f,  // 0
+        -0.25f, 0.0f,  0.0f,  // 1
+        0.0f,   -0.5f, 0.0f,  // 2
+        0.25f,  0.0f,  0.0f,  // 3
+        0.5f,   -0.5f, 0.0f,  // 4
+        0.0f,   0.5f,  0.0f   // 5
     };
 
     GLuint indices[] = {
@@ -89,19 +89,22 @@ int main() {
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
     glEnableVertexAttribArray(0);  // enable it
 
+    // Unbind the VAO (it's always a good thing to unbind any buffer to prevent weird bugs)
+    glBindVertexArray(0);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+
     while (!glfwWindowShouldClose(window)) {
+        glClear(GL_COLOR_BUFFER_BIT);  // clear colors from previous frame
+
         glUseProgram(shaderProgram);
         glBindVertexArray(VAO);
-        glDrawElements(GL_TRIANGLES, 9, GL_UNSIGNED_INT, 0);  // Draw Elements
+        glDrawElements(GL_TRIANGLES, 9, GL_UNSIGNED_INT, 0);
+        glBindVertexArray(0);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
-
-    // Unbind buffers by binding buffer types to 0
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-    glBindVertexArray(0);
 
     // Delete the buffers
     glDeleteVertexArrays(1, &VAO);
