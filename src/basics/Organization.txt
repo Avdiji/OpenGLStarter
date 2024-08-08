@@ -1,0 +1,5 @@
+1. Create a ressource directory, which contains the shaders (dataending .vert or .frag depending on the shader type)
+2. Define a shader class, with the needed utility functions (read vertex/fragment shader, activate/deactivate shader)
+3. Define a VertexBufferClass (VBO-Class) Bind/Unbind/Delete
+4. Do the same for the EBO
+5. Define a class for VAO (VertexArrayClass) LinkVBO, Bind, Unbind, Delete
